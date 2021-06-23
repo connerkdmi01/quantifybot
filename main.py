@@ -49,6 +49,8 @@ async def on_message(message):
                 msg += "ℂ"
             elif lower == "o":
                 msg += "⊖"
+            elif lower == "b":
+                msg += "𝔹"
             else:
                 msg += e
         await message.channel.send(msg)
