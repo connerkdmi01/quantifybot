@@ -18,7 +18,9 @@ async def on_message(message):
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
+    
+    if "Conner is dumb" in message.content:
+        await message.channel.send("I totally agree! He's super dumb.")
 
-token = os.getenv('DISCORD_TOKEN')
-client = discord.Client()
+token = os.getenv('TOKEN')
 client.run(token)
