@@ -13,14 +13,53 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    content = message.content
+
+    replacedict = {
+        "a": "∀",
+        "e": "∃"
+    }
+
     if message.author == client.user:
+        if "I totally agree! He's super dumb." in content:
+            await message.channel.send("But Giselle's even dumber!")
         return
 
-    if message.content.startswith('$hello'):
+    if content.startswith('!hello'):
         await message.channel.send('Hello!')
     if message.content.startswith("Conner is dumb"):
         await message.channel.send("I agree, Conner is dumb!")
 
-token = os.getenv('DISCORD_TOKEN')
-client = discord.Client()
+    if content.startswith('!q'):
+        oldmsg = content[2:]
+        msg = ''
+        for e in oldmsg:
+            lower = e.lower()
+            if lower == "a":
+                msg += "∀"
+            elif lower == "e":
+                msg += "∃"
+            elif lower == "n":
+                msg += "ℕ"
+            elif lower == "z":
+                msg += "ℤ"
+            elif lower == "q":
+                msg += "ℚ"
+            elif lower == "r":
+                msg += "ℝ"
+            elif lower == "c":
+                msg += "ℂ"
+            elif lower == "o":
+                msg += "⊖"
+            elif lower == "b":
+                msg += "𝔹"
+            else:
+                msg += e
+        await message.channel.send(msg)
+    
+    if "Conner is dumb" in content:
+        await message.channel.send("I totally agree! He's super dumb.")
+
+
+token = os.getenv('TOKEN')
 client.run(token)
