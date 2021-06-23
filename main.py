@@ -29,10 +29,26 @@ async def on_message(message):
         await message.channel.send('Hello!')
 
     if content.startswith('!q'):
+        oldmsg = content[2:]
         msg = ''
-        for e in content:
-            if e.lower() in replacedict.values():
-                msg += dict.get(e.lower())
+        for e in oldmsg:
+            lower = e.lower()
+            if lower == "a":
+                msg += "∀"
+            elif lower == "e":
+                msg += "∃"
+            elif lower == "n":
+                msg += "ℕ"
+            elif lower == "z":
+                msg += "ℤ"
+            elif lower == "q":
+                msg += "ℚ"
+            elif lower == "r":
+                msg += "ℝ"
+            elif lower == "c":
+                msg += "ℂ"
+            elif lower == "o":
+                msg += "⊖"
             else:
                 msg += e
         await message.channel.send(msg)
