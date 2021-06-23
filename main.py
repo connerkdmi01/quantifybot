@@ -1,5 +1,6 @@
 import discord
 import os
+import dotenv
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,4 +21,6 @@ async def on_message(message):
     if message.content.startswith("Conner is dumb"):
         await message.channel.send("I agree, Conner is dumb!")
 
-client.run(os.getenv('TOKEN'))
+token = os.getenv('DISCORD_TOKEN')
+client = discord.Client()
+client.run(token)
